@@ -1,0 +1,40 @@
+Sequence Length 3
+
+DNA Size: 12
+Time Elapsed : 1 ms
+
+DNA Size: 100
+Time Elapsed : 2 ms
+
+DNA Size: 500
+Time Elapsed : 2 ms
+
+DNA Size: 10000
+Time Elapsed : 18 ms
+
+DNA Size: 20000
+Time Elapsed : 30 ms
+
+DNA Size: 30000
+Time Elapsed : 45 ms
+
+DNA Size: 40000
+Time Elapsed : 72 ms
+
+DNA Size: 50000
+Time Elapsed : 73 ms
+
+DNA Size: 60000
+Time Elapsed : 79 ms
+
+DNA Size: 70000
+Time Elapsed : 99 ms
+
+DNA Size: 80000
+Time Elapsed : 109 ms
+
+DNA Size: 90000
+Time Elapsed : 129 ms
+
+DNA Size: 100000
+Time Elapsed : 143 ms
