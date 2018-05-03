@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <list>
+#include "time.h"
 #include <iterator>
 #include <string>
 #include <fstream>
@@ -83,6 +84,7 @@ public:
 
 int main()
 {
+	clock_t start, stop;
 	hasht h;
 	string s1, s2;
 	s1 = h.corpus();
@@ -93,7 +95,10 @@ int main()
 	cout << "Please enter the length of matching sequence" << endl;
 	cin >> l;
 	h.input(s1, l);
+	start = clock();
 	h.compare(s2, l);
+	stop = clock();
+	cout << "Time Elapsed : " << (double)(stop - start)*1000.0 / CLOCKS_PER_SEC << endl;
 	return 0;
 }
 
