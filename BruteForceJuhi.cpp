@@ -1,5 +1,5 @@
-// BloomFilter.cpp : Defines the entry point for the console application.
-//
+// BruteForceJuhi.cpp : Defines the entry point for the console application.
+
 
 #include "stdafx.h"
 #include <iostream>
@@ -10,30 +10,11 @@
 #include <fstream>
 
 using namespace std;
-using byte = unsigned char;
 
-class hasht {
-	byte *arr;
-	int V;
+class brute {
+	list<string> *ht;
+
 public:
-
-	void input(string str, int l)
-	{
-		V = str.length() / l;
-		arr = new byte[V];
-		for (int j = 0; j < V; j++)
-			arr[j] = 0;
-		long weight = 0;
-		for (int i = 0; i != str.length() - l; i++)
-		{
-			for (int k = 0; k<l; k++)
-				weight += str[i + k]; 
-			weight = weight%V;
-			arr[weight]=1;
-			weight = 0;
-		}
-		return;
-	}
 
 	string corpus() {
 		string x;
@@ -61,21 +42,38 @@ public:
 		return x;
 	}
 
-	void compare(string str, int l)
+	void compare(string s1, string s2, int l)
 	{
-		long w = 0;
-		int count = 0, t = 0;
-		for (int i = 0; i != str.length() - l; i++)
-		{
-			w += str[i] + str[i + 1] + str[i + 2];
-			w = w%V;
-			t++;
-			if (arr[w] == 1)
-			{
-				count++;
-			}
+		double count = 0;
+		double t = s1.length()-l+1;
+		bool flag = true;
 
+		for (int i = 0; i< s1.length()-(l-1); i++)
+		{
+			for (int j = 0; j < s2.length()-(l-1); j++)
+			{
+				for (int k = 0; k < l; k++)
+				{
+					if (s1[i + k] == s2[j + k])
+					{
+						flag = 1;
+						continue;
+					}
+					else
+					{
+						flag = 0;
+						break;
+					}
+				}
+				if (flag==1)
+					count++;
+				flag = 0;
+
+			}
 		}
+
+		cout << "count = " << count << endl;
+		cout << "t = " << t << endl;
 		double x = (double)count / t;
 		cout << " " << x * 100 << "% matched!" << endl;
 	}
@@ -86,7 +84,7 @@ public:
 int main()
 {
 	clock_t start, stop;
-	hasht h;
+	brute h;
 	string s1, s2;
 	s1 = h.corpus();
 	s2 = h.pattern();
@@ -95,11 +93,11 @@ int main()
 	int l;
 	cout << "Please enter the length of matching sequence" << endl;
 	cin >> l;
-	h.input(s1, l);
 	start = clock();
-	h.compare(s2, l);
+	h.compare(s2, s1, l);
 	stop = clock();
 	cout << "Time Elapsed : " << (double)(stop - start)*1000.0 / CLOCKS_PER_SEC << endl;
 	return 0;
+
 }
 

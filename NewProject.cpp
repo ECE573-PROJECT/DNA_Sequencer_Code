@@ -13,19 +13,21 @@ using namespace std;
 
 class hasht{
 	list<string> *ht;
+	int V;
 
 public:
 
 	void input(string str,int l) 
 	{
-		int V = str.length() / l;
+		V = str.length() / l;
 		string stri;
 		ht = new list<string>[V];
 		long weight = 0;
-		for (int i = 0; i != str.length()-l; i++)
+		for (int i = 0; i <= str.length()-l; i++)
 		{
-			weight += str[i] + str[i + 1] + str[i + 2];
-			weight = weight%l;
+			for(int k=0;k<l;k++)
+				weight += str[i+k];
+			weight = weight%V;
 			stri = str.substr(i,l);
 			ht[weight].push_front(stri);
 			weight = 0;
@@ -63,12 +65,14 @@ public:
 	{
 		long w=0;
 		string stri;
+
 		int count = 0,t=0;
 		list<string>::iterator it;
 		for (int i = 0; i != str.length()-l; i++)
 		{
-			w += str[i] + str[i + 1] + str[i + 2];
-			w = w%l;
+			for(int k=0;k<l;k++)
+				w += str[i+k];
+			w = w%V;
 			t++;
 			stri = str.substr(i, l);
 			for (it = ht[w].begin(); it != ht[w].end(); it++)
@@ -76,9 +80,12 @@ public:
 				if (*it == stri)
 				{
 					count++;
+					cout << " " << stri<<endl;
 				}
 			}
 		}
+		cout << "count = " << count << endl;
+		cout << "t = " << t << endl;
 		double x = (double)count / t;
 		cout << " " << x*100  <<"% matched!"<< endl;
 }
