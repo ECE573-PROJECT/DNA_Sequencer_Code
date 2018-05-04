@@ -19,7 +19,7 @@ public:
 	string corpus() {
 		string x;
 		ifstream file;
-		file.open("case1-corpus");
+		file.open("case1-corpus.txt");
 		if (file.is_open())
 		{
 			file >> x;
@@ -32,7 +32,7 @@ public:
 	string pattern() {
 		string x;
 		ifstream file;
-		file.open("case1-pattern");
+		file.open("case1-pattern.txt");
 		if (file.is_open())
 		{
 			file >> x;
@@ -45,12 +45,10 @@ public:
 	void compare(string s1, string s2, int l)
 	{
 		double count = 0;
-		double t = s1.length()-l+1;
 		bool flag = true;
-
-		for (int i = 0; i< s1.length()-(l-1); i++)
+		for (int i = 0; i< s1.length()-l+1; i++)
 		{
-			for (int j = 0; j < s2.length()-(l-1); j++)
+			for (int j = 0; j < s2.length()-l+1; j++)
 			{
 				for (int k = 0; k < l; k++)
 				{
@@ -72,10 +70,7 @@ public:
 			}
 		}
 
-		cout << "count = " << count << endl;
-		cout << "t = " << t << endl;
-		double x = (double)count / t;
-		cout << " " << x * 100 << "% matched!" << endl;
+		cout << "Total " << count <<" locations matched!"<< endl;
 	}
 
 };
