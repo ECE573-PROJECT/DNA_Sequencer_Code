@@ -20,7 +20,10 @@ Contains the code and files to run the final tests
 BETA TEST CODE:
 Contains the code and files to run the intital tests
 
-
 DATASET
 Contains tests files used to run the sequences. 
-NOTE:These files must be stored in the same directory as the code files. 
+NOTE: These files must be stored in the same directory as the code files. 
+
+DOCUMENTATION:
+Contains the report and presentation for this project. 
+These items were also submitted separately via Sakai
